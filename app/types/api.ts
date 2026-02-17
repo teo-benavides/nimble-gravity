@@ -1,4 +1,4 @@
-interface ApplyRequestBody {
+export interface ApplyRequestBody {
     email: string;
     jobId: string;
     githubUrl: string;

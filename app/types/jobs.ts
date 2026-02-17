@@ -1,4 +1,4 @@
-interface JobData {
+export interface JobData {
     id: string;
     title: string;
 }

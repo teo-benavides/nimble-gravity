@@ -1,3 +1,4 @@
+import { getJobs } from '@/app/lib/jobs.server';
 import { NextResponse } from 'next/server';
 
 export async function GET(request: Request) {

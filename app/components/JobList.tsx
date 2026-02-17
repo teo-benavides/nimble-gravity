@@ -1,6 +1,8 @@
 "use client"
 
 import { useState, useEffect } from 'react';
+import { ApplyRequestBody } from '@/app/types/api';
+import { JobData } from '@/app/types/jobs';
 
 interface JobProps {
     jobId: string;
@@ -18,7 +20,7 @@ function Job({ jobId, title }: JobProps) {
 
         try {
             const body: ApplyRequestBody = {
-                email: process.env.NEXT_PUBLIC_CANDIDATE_EMAIL || '',
+                email: process.env.NEXT_PUBLIC_APPLICANT_EMAIL || '',
                 jobId: jobId,
                 githubUrl: githubUrl,
             };

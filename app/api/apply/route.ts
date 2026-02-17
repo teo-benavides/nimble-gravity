@@ -1,3 +1,5 @@
+import { getCandidateByEmail } from '@/app/lib/candidates.server';
+import { ApplyRequestBody } from '@/app/types/api';
 import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
@@ -16,6 +18,7 @@ export async function POST(request: Request) {
                 jobId: body.jobId,
                 candidateId: candidate.candidateId,
                 repoUrl: body.githubUrl,
+                applicationId: candidate.applicationId,
             }),
         });
 
@@ -23,12 +26,10 @@ export async function POST(request: Request) {
             throw new Error('Failed to submit');
         }
 
-        const responseBody = await response.json();
-        console.log(responseBody);
-
         return NextResponse.json({ message: 'Application submitted successfully' }, { status: 200 });
     }
-    catch {
+    catch (err) {
+        console.error(err);
         return NextResponse.json({ error: 'Failed to apply' }, { status: 500 });
     }
 }
